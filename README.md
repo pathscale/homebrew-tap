@@ -2,19 +2,29 @@
 
 Homebrew tap for pathscale software.
 
+## agencyzero
+
+Apple Silicon, macOS 11 or later.
+
 ```bash
 brew tap pathscale/tap
+brew trust pathscale/tap
 brew install --cask agencyzero
 ```
 
-## agencyzero
+The `brew trust` step is not optional. Homebrew refuses to load a cask from a
+third-party tap until the tap is trusted, and the error it prints if you skip it
+names the fix.
 
-Apple Silicon, macOS 11 or later. The bundle is ad-hoc signed rather than
-notarized, so the cask strips the quarantine flag after install; without that
-macOS reports the app as damaged on first launch. A browser download of the same
-tarball will **not** work for the same reason, which is why this tap is the only
-supported install route for now.
+### Why the cask looks the way it does
 
-Updates are not handled by `brew upgrade`. The app ships Tauri's updater and
-pulls itself forward from the CDN, so the cask is pinned to `version :latest`
-and never needs a commit per release.
+The bundle is ad-hoc signed rather than notarized, so Gatekeeper rejects it. The
+cask strips the quarantine flag after install, because Homebrew applies it to
+every cask artifact and without the strip macOS reports the app as damaged on
+first launch. For the same reason a browser download of the same tarball will
+**not** work, which is why this tap is the only supported install route for now.
+
+`brew upgrade` will never update this cask. The download URL carries no version,
+so `version :latest` is the only honest value and Homebrew cannot compare
+releases. The app ships Tauri's updater and pulls itself forward from the same
+CDN instead, which is what `auto_updates true` records.
