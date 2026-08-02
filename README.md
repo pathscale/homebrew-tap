@@ -28,3 +28,12 @@ first launch. For the same reason a browser download of the same tarball will
 so `version :latest` is the only honest value and Homebrew cannot compare
 releases. The app ships Tauri's updater and pulls itself forward from the same
 CDN instead, which is what `auto_updates true` records.
+
+## AgencyZero Experimental
+
+The experimental profile installs beside the standard application and keeps a
+separate application-support directory and updater channel:
+
+```sh
+brew install --cask pathscale/tap/agencyzero-experimental
+```
