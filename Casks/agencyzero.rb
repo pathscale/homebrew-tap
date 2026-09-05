@@ -29,9 +29,9 @@ cask "agencyzero" do
   #
   # Delete this block once the bundle is notarized: leaving it in would strip a
   # Gatekeeper check that users should get.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/AgencyZero.app"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{appdir}}/AgencyZero.app"]
   end
 
   zap trash: [
