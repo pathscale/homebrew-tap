@@ -19,9 +19,9 @@ cask "agencyzero-experimental" do
   # The bundle is ad-hoc signed until the application has a renewed Developer
   # ID and notarization path. Homebrew otherwise leaves quarantine in place and
   # macOS reports the application as damaged on first launch.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/AgencyZero Experimental.app"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-dr", "com.apple.quarantine", "{{appdir}}/AgencyZero Experimental.app"]
   end
 
   zap trash: [

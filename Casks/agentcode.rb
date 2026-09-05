@@ -18,25 +18,25 @@ cask "agentcode" do
   # The two Mach-O executables are ad-hoc signed rather than notarized.
   # Homebrew quarantines cask downloads, so clear that attribute before first
   # execution or Gatekeeper reports the binaries as damaged.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: [
-                     "-dr",
-                     "com.apple.quarantine",
-                     "#{staged_path}/agentcode",
-                     "#{staged_path}/codeserver",
-                   ]
-    system_command "#{staged_path}/codeserver", args: ["install"]
-    system_command "#{staged_path}/codeserver", args: ["start"]
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: [
+          "-dr",
+          "com.apple.quarantine",
+          "{{staged_path}}/agentcode",
+          "{{staged_path}}/codeserver",
+        ]
+    run "{{staged_path}}/codeserver", args: ["install"]
+    run "{{staged_path}}/codeserver", args: ["start"]
   end
 
-  uninstall_preflight do
-    system_command "#{staged_path}/codeserver",
-                   args:         ["stop"],
-                   must_succeed: false
-    system_command "#{staged_path}/codeserver",
-                   args:         ["uninstall"],
-                   must_succeed: false
+  uninstall_preflight_steps do
+    run "{{staged_path}}/codeserver",
+        args:         ["stop"],
+        must_succeed: false
+    run "{{staged_path}}/codeserver",
+        args:         ["uninstall"],
+        must_succeed: false
   end
 
   zap trash: "~/Library/Application Support/com.pathscale.agentcode"
