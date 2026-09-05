@@ -32,10 +32,10 @@ cask "agentcode" do
 
   uninstall_preflight do
     system_command "#{staged_path}/codeserver",
-                   args: ["stop"],
+                   args:         ["stop"],
                    must_succeed: false
     system_command "#{staged_path}/codeserver",
-                   args: ["uninstall"],
+                   args:         ["uninstall"],
                    must_succeed: false
   end
 
