@@ -16,6 +16,24 @@ The `brew trust` step is not optional. Homebrew refuses to load a cask from a
 third-party tap until the tap is trusted, and the error it prints if you skip it
 names the fix.
 
+## AgentCode
+
+Apple Silicon, macOS 11 or later.
+
+```bash
+brew tap pathscale/tap
+brew trust pathscale/tap
+brew install --cask agentcode
+```
+
+Install the persistent user service after choosing an explicit state path:
+
+```bash
+codeserver --state-dir /absolute/path/to/state install
+codeserver --state-dir /absolute/path/to/state start
+codeserver --state-dir /absolute/path/to/state status
+```
+
 ### Why the cask looks the way it does
 
 The bundle is ad-hoc signed rather than notarized, so Gatekeeper rejects it. The
