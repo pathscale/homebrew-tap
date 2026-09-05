@@ -26,5 +26,18 @@ cask "agentcode" do
                      "#{staged_path}/agentcode",
                      "#{staged_path}/codeserver",
                    ]
+    system_command "#{staged_path}/codeserver", args: ["install"]
+    system_command "#{staged_path}/codeserver", args: ["start"]
   end
+
+  uninstall_preflight do
+    system_command "#{staged_path}/codeserver",
+                   args: ["stop"],
+                   must_succeed: false
+    system_command "#{staged_path}/codeserver",
+                   args: ["uninstall"],
+                   must_succeed: false
+  end
+
+  zap trash: "~/Library/Application Support/com.pathscale.agentcode"
 end
