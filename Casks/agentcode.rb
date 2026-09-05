@@ -1,10 +1,8 @@
 cask "agentcode" do
-  # AgentCode is distributed from a fixed CDN path while releases remain
-  # private. Reinstalling the cask fetches the current signed archive.
-  version :latest
-  sha256 :no_check
+  version "0.1.1"
+  sha256 "5c92404ab3398adc4d91bf85dae4b6d23ca0dee9b4f59634ba46f59641843c2f"
 
-  url "https://24x.ai/agentcode/AgentCode-aarch64-apple-darwin.tar.gz"
+  url "https://24x.ai/agentcode/AgentCode-aarch64-apple-darwin.tar.gz?v=#{version}"
   name "AgentCode"
   desc "Persistent semantic workspace for coding agents"
   homepage "https://github.com/pathscale/agentcode"
