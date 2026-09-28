@@ -54,3 +54,19 @@ separate application-support directory and updater channel:
 ```sh
 brew install --cask pathscale/tap/agencyzero-experimental
 ```
+
+## cargo-vip
+
+Builds against the private crates.vip Cargo registry. Built from source, so any
+platform Homebrew runs on.
+
+```bash
+brew tap pathscale/tap
+brew trust pathscale/tap
+brew install cargo-vip
+cargo vip login
+```
+
+Repos with `registry = "vip"` dependencies build with `cargo vip build`,
+`cargo vip test` and so on. Plain `cargo` fails on them with
+`expected value at line 1 column 1`.
