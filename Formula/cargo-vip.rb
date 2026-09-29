@@ -27,7 +27,9 @@ class CargoVip < Formula
   end
 
   def install
-    bin.install "bin/cargo-vip"
+    # The tarball holds only bin/, and Homebrew stages inside a lone top-level
+    # directory, so the binary is at the top here.
+    bin.install "cargo-vip"
   end
 
   test do
