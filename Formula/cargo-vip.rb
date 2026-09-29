@@ -1,28 +1,28 @@
 class CargoVip < Formula
   desc "Use a private S3-compatible bucket as a Cargo registry, without running a server"
   homepage "https://cargo.vip"
-  version "0.1.5"
+  version "0.2.1"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     on_arm do
       url "https://github.com/pathscale/cargo.vip/releases/download/v#{version}/cargo-vip-aarch64-apple-darwin.tar.gz"
-      sha256 "46bc1a5d01b81310d9723b80df2db0f17b48fd480954d19a5179c26507f63813"
+      sha256 "00aefabe6a8018df23e32c2fe0a04f48007dcaccfb855db6fa126e889e8c4156"
     end
     on_intel do
       url "https://github.com/pathscale/cargo.vip/releases/download/v#{version}/cargo-vip-x86_64-apple-darwin.tar.gz"
-      sha256 "268dd026afa0bc17ec4d7e611834bb17546fad0fb01d162351c19736eb23b95b"
+      sha256 "539133f73236c9eedb449bac938f2caf2dc384ab8eda398523ecedfe557ef926"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/pathscale/cargo.vip/releases/download/v#{version}/cargo-vip-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "f9436c5fccfc8bc3efa3a591db484630e47c6ff288bd931e6aa26c234915eecb"
+      sha256 "db986b0725b267e216b468ce1d288308941de63efecfd56cd7f4140f2b633ab5"
     end
     on_intel do
       url "https://github.com/pathscale/cargo.vip/releases/download/v#{version}/cargo-vip-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "723b7e30698ac1909b7117727fe8bded1a07c531095604ccaf20103dfcbe2c95"
+      sha256 "a5ad7cb793f578b13b443c0e30356014c31d82c910724c1de0ad6d4f717c7a2d"
     end
   end
 
