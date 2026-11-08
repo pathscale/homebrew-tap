@@ -23,17 +23,6 @@ cask "agencyzero" do
 
   app "AgencyZero.app"
 
-  # The bundle is ad-hoc signed, not notarized, so Gatekeeper rejects it and
-  # Homebrew quarantines every cask artifact since 5.1 removed --no-quarantine.
-  # Without this the app dies on first launch claiming to be damaged.
-  #
-  # Delete this block once the bundle is notarized: leaving it in would strip a
-  # Gatekeeper check that users should get.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/AgencyZero.app"]
-  end
-
   zap trash: [
     "~/Library/Application Support/com.pathscale.agencyzero",
     "~/Library/Caches/com.pathscale.agencyzero",
